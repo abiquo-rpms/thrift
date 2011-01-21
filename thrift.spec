@@ -7,7 +7,7 @@
 
 Name:             thrift
 Version:          0.2.0
-Release:          1.abiquo
+Release:          2.abiquo
 Summary:          A multi-language RPC and serialization framework
 
 Group:            System Environment/Libraries
@@ -106,10 +106,13 @@ find %{buildroot} -type f -name "*.la" -exec rm -f {} ';'
 %defattr(-,root,root,-)
 %doc lib/py/README tutorial/py tutorial/*.thrift
 %{python_sitearch}/%{name}
-%if 0%{?fedora}  > 9
+%if 0%{?fedora}  > 9 || 0%{?rhel} >= 6
 %{python_sitearch}/Thrift-*.egg-info
 %endif
 
 %changelog
+* Fri Jan 21 2011 Sergio Rubio <srubio@abiquo.com> - 0.2.0-2.abiquo
+- fixed rhel6 build
+
 * Thu Sep 09 2010 Sergio Rubio <srubio@abiquo.com> - 0.2.0-1.abiquo
 - Initial Release
